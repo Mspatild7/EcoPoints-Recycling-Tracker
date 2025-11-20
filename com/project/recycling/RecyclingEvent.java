@@ -32,7 +32,7 @@ public class RecyclingEvent {
     }
 
     public String toString() {
-        return "Material Type: " + materialType + ", Weight: " + weight + ", Date: " + date + ", Eco Points: "
+        return "Material Type: " + materialType + "\nWeight: " + weight + "\nDate: " + date + "\nEco Points: "
                 + ecoPoints;
     }
 

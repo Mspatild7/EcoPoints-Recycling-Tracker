@@ -45,7 +45,6 @@ public class RecyclingService {
         String material = InputHelper.userMaterial();
         double weight = InputHelper.weight();
         Integer ecoPoints = 0;
-        // scanner.nextLine();
         ecoPoints += (int) (weight * 10);
 
         RecyclingEvent recyclingEvent = new RecyclingEvent(material, weight, InputHelper.eventDate(), ecoPoints);
@@ -65,14 +64,20 @@ public class RecyclingService {
                 System.out.println("No Household Registered");
                 return;
             }
-
-            FileReader fileReader = new FileReader("recycling.txt");
-            BufferedReader bufferedReader = new BufferedReader(fileReader);
-            String line;
-
-            while ((line = bufferedReader.readLine()) != null) {
-                System.out.println(line);
+            
+            for(Map.Entry<Integer,Household> entry : map.entrySet()) {
+                System.out.println("Household " + entry.getKey());
+                
+                System.out.println(entry.getValue());
+                Household h = entry.getValue();
+               // h.getEvent();
+               System.out.println("Recycling Events:");
+                for(RecyclingEvent event1 : h.getEvent()){
+                    System.out.println(event1.toString());
+                    System.out.println("-----------------------------------");
+                }                
             }
+
 
         } catch (Exception e) {
             System.out.println("Error : " + e.getMessage());

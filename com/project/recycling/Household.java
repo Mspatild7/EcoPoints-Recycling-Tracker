@@ -62,7 +62,7 @@ public class Household {
 
     @Override
     public String toString() {
-        return "Unique ID : " + uniqueID + "\nName :  " + name + "\nAddress : " + address + "\nDate : " + joiningDate + "\nEcoPoints : " + ecoPoints;
+        return "Unique ID : " + uniqueID + "\nName :  " + name + "\nAddress : " + address + "\nDate : " + joiningDate + "\nEcoPoints : " + ecoPoints + "\n-----------------------------------";
     }
 
 }

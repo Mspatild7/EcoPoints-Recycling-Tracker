@@ -10,6 +10,10 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         HashMap<Integer, Household> map = new HashMap<>();
         ArrayList<RecyclingEvent> event = new ArrayList<>();
+
+        
+        map.put(1, new Household(1, "Mrunal", "Raver", LocalDate.now()));
+        event.add(new RecyclingEvent("Plastic", 12.0, LocalDate.now(), 130));
         try {
             FileWriter filewriter = new FileWriter("recycling.txt");
             BufferedWriter bufferedWriter = new BufferedWriter(filewriter);
@@ -34,10 +38,11 @@ public class Main {
                     case 2:
                         // Log Recycling Events
                         RecyclingService.logRecyclingEvent(map);
-                        //System.out.println("--\n" + map + "\n--\n");
+                        // System.out.println("--\n" + map + "\n--\n");
                         break;
 
                     case 3: // Display Reports
+                        System.out.println("-----------------------------------");
                         RecyclingService.displayReports(event, map, bufferedWriter);
                         break;
 
