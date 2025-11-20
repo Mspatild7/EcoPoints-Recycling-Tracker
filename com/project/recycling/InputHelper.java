@@ -35,7 +35,7 @@ public class InputHelper {
         System.out.print("Enter the material : ");
         //scanner.nextLine();
         String material = scanner.nextLine();
-        
+
         if(material.isEmpty()){
             throw new IllegalArgumentException("Material cannot be empty");
         }        

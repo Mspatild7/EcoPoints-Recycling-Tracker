@@ -31,9 +31,13 @@ public class RecyclingEvent {
         return ecoPoints;
     }
 
+    public String convertToJson(){
+        return "{" + "\"materialType\":\"" + materialType + "\",\"weight\":" + weight + ",\"date\":\"" + date + "\",\"ecoPoints\":" + ecoPoints + "}";
+    }
+
     public String toString() {
         return "Material Type: " + materialType + "\nWeight: " + weight + "\nDate: " + date + "\nEco Points: "
-                + ecoPoints;
+                + ecoPoints + "\n-----------------------------------";
     }
 
 }

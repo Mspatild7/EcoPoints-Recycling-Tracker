@@ -31,6 +31,10 @@ public class Household {
         return list;
     }
 
+    public void setEvent(ArrayList<RecyclingEvent> event){
+        this.events = event;
+    }
+
     public Integer getUniqueID() {
         return uniqueID;
     }
@@ -54,11 +58,36 @@ public class Household {
     public LocalDate getJoiningDate(){
         return joiningDate;
     }
-    
+
     public Integer getEcoPoints(){
         return ecoPoints;
     }
-        
+
+    public String convertToJson() {
+        // Start household JSON
+        StringBuilder json = new StringBuilder();
+        json.append("{");
+        json.append("\"uniqueID\":").append(uniqueID).append(",");
+        json.append("\"name\":\"").append(name).append("\",");
+        json.append("\"address\":\"").append(address).append("\",");
+        json.append("\"joiningDate\":\"").append(joiningDate).append("\",");
+        json.append("\"ecoPoints\":").append(ecoPoints).append(",");
+
+        // Add recycling events array
+        json.append("\"recyclingEvents\":[");
+        for (int i = 0; i < events.size(); i++) {
+            json.append(events.get(i).convertToJson());
+            if (i < events.size() - 1) {
+                json.append(","); // Add comma between events
+            }
+        }
+        json.append("]"); // Close events array
+
+        json.append("}"); // Close household object
+
+        return json.toString();
+    }
+
 
     @Override
     public String toString() {
