@@ -1,9 +1,6 @@
 package com.project.recycling;
 
 import java.util.*;
-import java.time.*;
-import java.io.*;
-import org.json.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -11,57 +8,11 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         HashMap<Integer, Household> map = new HashMap<>();
         ArrayList<RecyclingEvent> event = new ArrayList<>();
-        Integer uniqueID = 0;
 
-        // map.put(1, new Household(1, "Mrunal", "Raver", LocalDate.now()));
-        // event.add(new RecyclingEvent("Plastic", 12.0, LocalDate.now(), 130));
+         // Auto-Load data during program run , It will work as a Local database
+        RecyclingIO.loadData(map, event);
 
-        // Auto-Load data during program run , It will work as a Local database
         try {
-
-            File file = new File("recycling.json");
-            if (!file.exists()) {
-                System.out.println("No Previous Data Found !!!");
-            } else {
-
-                FileReader fileReader = new FileReader(file);
-                BufferedReader bufferedReader = new BufferedReader(fileReader);
-                String line;
-                StringBuilder data = new StringBuilder();
-                while ((line = bufferedReader.readLine()) != null) {
-                    data.append(line);
-                }
-                String jsonString = data.toString();
-                JSONArray jsonArray = new JSONArray(jsonString);
-                for (int i = 0; i < jsonArray.length(); i++) {
-                    JSONObject h = jsonArray.getJSONObject(i);
-                    int id = h.getInt("uniqueID");
-                    LocalDate localDate = LocalDate.parse(h.getString("joiningDate"));
-                    Household houseHoldData = new Household(id, h.getString("name"), h.getString("address"), localDate);
-                    map.put(id, houseHoldData);
-                    JSONArray array = h.getJSONArray("recyclingEvents");
-                    for (int j = 0; j < array.length(); j++) {
-                        String materialType = array.getJSONObject(j).getString("materialType");
-                        Double weight = array.getJSONObject(j).getDouble("weight");
-                        LocalDate localDate2 = LocalDate.parse(array.getJSONObject(j).getString("date"));
-                        Integer ecoPoints = array.getJSONObject(j).getInt("ecoPoints");
-                        houseHoldData
-                                .addRecyclingEvent(new RecyclingEvent(materialType, weight, localDate2, ecoPoints));
-                    }
-
-                    if (id > uniqueID) {
-                        uniqueID = id;
-                    }
-                    // [{"materialType":"pa","weight":12.0,"date":"2025-11-21","ecoPoints":120}]
-                    // map.put(id, h);
-                }
-                bufferedReader.close();
-                InputHelper.uniqueId = uniqueID;
-            }
-            // System.out.println(jsonArray);
-
-            
-
             while (true) {
                 System.out.println("===================================");
                 System.out.println(
@@ -97,7 +48,7 @@ public class Main {
                         break;
 
                     case 5: // Save Data
-                        RecyclingService.saveData(map);
+                        RecyclingIO.saveData(map);
                         break;
 
                     case 6:
@@ -109,6 +60,8 @@ public class Main {
             }
         } catch (Exception e) {
             System.out.println("Error : " + e.getMessage());
+        }finally{
+            scanner.close();
         }
     }
 }

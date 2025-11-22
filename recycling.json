@@ -1,32 +1,5 @@
 [
-    {
-        "uniqueID": 1,
-        "name": "Mrunal",
-        "address": "Mumbai",
-        "joiningDate": "2025-11-22",
-        "ecoPoints": 120,
-        "recyclingEvents": [
-            {
-                "materialType": "Plastic",
-                "weight": 12.0,
-                "date": "2025-11-22",
-                "ecoPoints": 120
-            }
-        ]
-    },
-    {
-        "uniqueID": 2,
-        "name": "Mahesh",
-        "address": "Pune",
-        "joiningDate": "2025-11-22",
-        "ecoPoints": 50,
-        "recyclingEvents": [
-            {
-                "materialType": "Metal",
-                "weight": 5.0,
-                "date": "2025-11-22",
-                "ecoPoints": 50
-            }
-        ]
-    }
+{"uniqueID":1,"name":"Mrunal","address":"Mumbai","joiningDate":"2025-11-22","ecoPoints":120,"recyclingEvents":[{"materialType":"Plastic","weight":12.0,"date":"2025-11-22","ecoPoints":120}]},
+{"uniqueID":2,"name":"Mahesh","address":"Pune","joiningDate":"2025-11-22","ecoPoints":50,"recyclingEvents":[{"materialType":"Metal","weight":5.0,"date":"2025-11-22","ecoPoints":50}]},
+{"uniqueID":3,"name":"Tushar","address":"Pune","joiningDate":"2025-11-23","ecoPoints":0,"recyclingEvents":[]}
 ]

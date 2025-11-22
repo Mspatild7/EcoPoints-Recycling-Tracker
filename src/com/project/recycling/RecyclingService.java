@@ -1,7 +1,6 @@
 package com.project.recycling;
 
 import java.util.*;
-import java.io.*;
 import java.time.*;
 
 public class RecyclingService {
@@ -56,10 +55,6 @@ public class RecyclingService {
 
             RecyclingEvent recyclingEvent = new RecyclingEvent(material, weight, InputHelper.eventDate(), ecoPoints);
             h.addRecyclingEvent(recyclingEvent);
-            String json = h.convertToJson();
-           /* bufferedwriter.write(json);
-            bufferedwriter.newLine();
-            bufferedwriter.flush();*/
             System.out.println("Event Added Successful");
             System.out.println("Updated EcoPoints : " + h.getEcoPoints());
             System.out.println("Total Events Logged for this Household : " + h.getEvent().size());
@@ -132,36 +127,6 @@ public class RecyclingService {
         System.out.println("Id : " + h.getUniqueID() + "\nName : " + h.getName() + "\nEcoPoints : " + h.getEcoPoints());
         System.out.println("-----------------------------------");
         System.out.println("Total Weight Recycled : " + totalWeight + " kg");
-    }
-
-    public static void saveData(HashMap<Integer,Household> map) {
-                
-        try {
-            FileWriter filewriter = new FileWriter("recycling.json");
-            BufferedWriter bufferedWriter = new BufferedWriter(filewriter);
-            bufferedWriter.write("[\n");
-            int count = map.size();
-        for(Map.Entry<Integer,Household> entry : map.entrySet()){
-            
-            Household h = entry.getValue();
-            ArrayList<RecyclingEvent> events = entry.getValue().getEvent();
-            bufferedWriter.write(h.convertToJson());
-            count--;
-            if(count > 0){
-                bufferedWriter.write(",\n");
-            }
-        }
-        bufferedWriter.newLine();
-        bufferedWriter.write("]\n");
-        bufferedWriter.flush();
-        bufferedWriter.close();
-
-        }catch(Exception e){
-            
-        }
-        
-
-
     }
 
 }
