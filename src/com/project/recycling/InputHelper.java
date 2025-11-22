@@ -5,14 +5,16 @@ import java.util.*;
 
 public class InputHelper {
 
+    //Scanner object for taking inputs
     static Scanner scanner = new Scanner(System.in);
     static Integer uniqueId = 0;
+    
     //Inputs for Househld Register
     public static Integer getID() {
         ++uniqueId;
         return uniqueId;
     }
-
+    
     public static String userName() {
         System.out.print("Enter your name : ");
         String name = scanner.nextLine();

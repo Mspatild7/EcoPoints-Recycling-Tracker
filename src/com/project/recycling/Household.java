@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 public class Household {
 
+    // Household class attributes
     private Integer uniqueID;
     private String name;
     private String address;
@@ -12,6 +13,7 @@ public class Household {
     private Integer ecoPoints;
     private ArrayList<RecyclingEvent> events;
 
+    // Household class constructor
     public Household(Integer uniqueID, String name, String address, LocalDate joiningDate) {
         this.uniqueID = uniqueID;
         this.name = name;
@@ -21,11 +23,13 @@ public class Household {
         this.events = new ArrayList<>();
     }
 
+    // Household class methods
     public void addRecyclingEvent(RecyclingEvent e){
         events.add(e);
         ecoPoints += e.getEcoPoints();
     }
 
+    // Getter and Setter methods
     public ArrayList<RecyclingEvent> getEvent(){
         ArrayList<RecyclingEvent> list = new ArrayList<>(events);
         return list;
@@ -63,6 +67,7 @@ public class Household {
         return ecoPoints;
     }
 
+    // Method to convert Household object to JSON string
     public String convertToJson() {
         // Start household JSON
         StringBuilder json = new StringBuilder();
@@ -88,7 +93,7 @@ public class Household {
         return json.toString();
     }
 
-
+    // Method to convert Household object to string
     @Override
     public String toString() {
         return "Unique ID : " + uniqueID + "\nName :  " + name + "\nAddress : " + address + "\nDate : " + joiningDate + "\nEcoPoints : " + ecoPoints + "\n-----------------------------------";

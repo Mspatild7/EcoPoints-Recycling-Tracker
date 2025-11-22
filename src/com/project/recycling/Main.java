@@ -13,6 +13,7 @@ public class Main {
         RecyclingIO.loadData(map, event);
 
         try {
+            // Display the menu and process user choices in a loop
             while (true) {
                 System.out.println("===================================");
                 System.out.println(
@@ -25,16 +26,12 @@ public class Main {
                 scanner.nextLine();
 
                 switch (userChoice) {
-                    case 1:
-                        // Household Register
-                       
+                    case 1: // Household Register
                         RecyclingService.registerHousehold(map);
                         break;
 
-                    case 2:
-                        // Log Recycling Events
+                    case 2: // Log Recycling Events
                         RecyclingService.logRecyclingEvent(map);
-                        // System.out.println("--\n" + map + "\n--\n");
                         break;
 
                     case 3: // Display Reports
